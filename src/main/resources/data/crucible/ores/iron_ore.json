@@ -1,0 +1,23 @@
+{
+  "material": "crucible:iron",
+  "blocks": {
+    "normal": "minecraft:iron_ore",
+    "deepslate": "minecraft:deepslate_iron_ore"
+  },
+  "generation": {
+    "enabled": true,
+    "spawnWeight": 45,
+    "veinSize": 6,
+    "veinsPerChunk": 8,
+    "minY": -32,
+    "maxY": 72,
+    "bestY": 16
+  },
+  "biomeGroups": {
+    "crucible:plains": 0.8,
+    "crucible:lukewarm_forests": 0.9,
+    "crucible:cold_forests": 1.0,
+    "crucible:rocky_mountainous": 1.6,
+    "minecraft:mushroom_fields": 1.0
+  }
+}

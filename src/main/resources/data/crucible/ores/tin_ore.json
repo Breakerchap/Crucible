@@ -1,0 +1,22 @@
+{
+  "material": "crucible:tin",
+  "blocks": {
+    "normal": "crucible:tin_ore",
+    "deepslate": "crucible:deepslate_tin_ore"
+  },
+  "generation": {
+    "enabled": true,
+    "spawnWeight": 38,
+    "veinSize": 5,
+    "veinsPerChunk": 6,
+    "minY": -16,
+    "maxY": 64,
+    "bestY": 24
+  },
+  "biomeGroups": {
+    "crucible:plains": 1.0,
+    "crucible:cold_forests": 0.9,
+    "crucible:warm_forests": 1.3,
+    "minecraft:mushroom_fields": 1.0
+  }
+}

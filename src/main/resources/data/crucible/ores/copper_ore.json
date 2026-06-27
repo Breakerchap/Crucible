@@ -1,0 +1,23 @@
+{
+  "material": "crucible:copper",
+  "blocks": {
+    "normal": "minecraft:copper_ore",
+    "deepslate": "minecraft:deepslate_copper_ore"
+  },
+  "generation": {
+    "enabled": true,
+    "spawnWeight": 50,
+    "veinSize": 8,
+    "veinsPerChunk": 9,
+    "minY": -16,
+    "maxY": 96,
+    "bestY": 48
+  },
+  "biomeGroups": {
+    "crucible:plains": 0.8,
+    "crucible:lukewarm_forests": 1.0,
+    "crucible:warm_forests": 1.2,
+    "crucible:rocky_mountainous": 1.3,
+    "minecraft:mushroom_fields": 1.0
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "material": "crucible:zinc",
+  "blocks": {
+    "normal": "crucible:zinc_ore",
+    "deepslate": "crucible:deepslate_zinc_ore"
+  },
+  "generation": {
+    "enabled": true,
+    "spawnWeight": 30,
+    "veinSize": 5,
+    "veinsPerChunk": 5,
+    "minY": -48,
+    "maxY": 48,
+    "bestY": -8
+  },
+  "biomeGroups": {
+    "crucible:rocky_mountainous": 1.7,
+    "crucible:ice": 1.1,
+    "minecraft:mushroom_fields": 1.0
+  }
+}

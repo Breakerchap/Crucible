@@ -1,0 +1,22 @@
+{
+  "material": "crucible:lead",
+  "blocks": {
+    "normal": "crucible:lead_ore",
+    "deepslate": "crucible:deepslate_lead_ore"
+  },
+  "generation": {
+    "enabled": true,
+    "spawnWeight": 28,
+    "veinSize": 5,
+    "veinsPerChunk": 5,
+    "minY": -48,
+    "maxY": 32,
+    "bestY": -12
+  },
+  "biomeGroups": {
+    "crucible:warm_forests": 1.6,
+    "crucible:lukewarm_forests": 0.9,
+    "crucible:plains": 0.8,
+    "minecraft:mushroom_fields": 1.0
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "crucible:plains",
+  "biomes": [
+    "minecraft:plains",
+    "minecraft:sunflower_plains",
+    "minecraft:meadow"
+  ]
+}
