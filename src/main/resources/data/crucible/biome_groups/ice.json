@@ -1,0 +1,9 @@
+{
+  "id": "crucible:ice",
+  "biomes": [
+    "minecraft:snowy_plains",
+    "minecraft:ice_spikes",
+    "minecraft:snowy_slopes",
+    "minecraft:frozen_peaks"
+  ]
+}

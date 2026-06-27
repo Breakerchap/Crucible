@@ -1,0 +1,22 @@
+{
+  "material": "crucible:aluminium",
+  "blocks": {
+    "normal": "crucible:aluminium_ore",
+    "deepslate": "crucible:deepslate_aluminium_ore"
+  },
+  "generation": {
+    "enabled": true,
+    "spawnWeight": 34,
+    "veinSize": 6,
+    "veinsPerChunk": 6,
+    "minY": 0,
+    "maxY": 112,
+    "bestY": 64
+  },
+  "biomeGroups": {
+    "crucible:rocky_mountainous": 1.6,
+    "crucible:deserts": 1.3,
+    "crucible:warm_forests": 1.1,
+    "minecraft:mushroom_fields": 1.0
+  }
+}

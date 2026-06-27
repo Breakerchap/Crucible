@@ -1,0 +1,22 @@
+{
+  "material": "crucible:silver",
+  "blocks": {
+    "normal": "crucible:silver_ore",
+    "deepslate": "crucible:deepslate_silver_ore"
+  },
+  "generation": {
+    "enabled": true,
+    "spawnWeight": 16,
+    "veinSize": 3,
+    "veinsPerChunk": 3,
+    "minY": -48,
+    "maxY": 40,
+    "bestY": -20
+  },
+  "biomeGroups": {
+    "crucible:ice": 1.5,
+    "crucible:cold_forests": 1.2,
+    "crucible:rocky_mountainous": 1.3,
+    "minecraft:mushroom_fields": 1.0
+  }
+}

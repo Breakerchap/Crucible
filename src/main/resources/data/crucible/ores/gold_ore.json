@@ -1,0 +1,22 @@
+{
+  "material": "crucible:gold",
+  "blocks": {
+    "normal": "minecraft:gold_ore",
+    "deepslate": "minecraft:deepslate_gold_ore"
+  },
+  "generation": {
+    "enabled": true,
+    "spawnWeight": 18,
+    "veinSize": 4,
+    "veinsPerChunk": 3,
+    "minY": -48,
+    "maxY": 32,
+    "bestY": -16
+  },
+  "biomeGroups": {
+    "crucible:deserts": 3.5,
+    "crucible:warm_forests": 1.0,
+    "crucible:rocky_mountainous": 1.2,
+    "minecraft:mushroom_fields": 1.0
+  }
+}

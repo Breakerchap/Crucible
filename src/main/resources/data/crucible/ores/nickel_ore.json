@@ -1,0 +1,22 @@
+{
+  "material": "crucible:nickel",
+  "blocks": {
+    "normal": "crucible:nickel_ore",
+    "deepslate": "crucible:deepslate_nickel_ore"
+  },
+  "generation": {
+    "enabled": true,
+    "spawnWeight": 22,
+    "veinSize": 4,
+    "veinsPerChunk": 4,
+    "minY": -64,
+    "maxY": 16,
+    "bestY": -32
+  },
+  "biomeGroups": {
+    "crucible:cold_forests": 1.2,
+    "crucible:ice": 1.4,
+    "crucible:rocky_mountainous": 1.3,
+    "minecraft:mushroom_fields": 1.0
+  }
+}
