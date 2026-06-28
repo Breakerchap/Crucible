@@ -1,0 +1,10 @@
+{
+  "id": "crucible:silver",
+  "type": "base_metal",
+  "durability": 25,
+  "weight": 70,
+  "strength": 25,
+  "hardness": 22,
+  "heatResistance": 30,
+  "enchantability": 80
+}

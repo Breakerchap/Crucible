@@ -1,0 +1,10 @@
+{
+  "id": "crucible:nickel",
+  "type": "base_metal",
+  "durability": 50,
+  "weight": 60,
+  "strength": 45,
+  "hardness": 55,
+  "heatResistance": 60,
+  "enchantability": 25
+}
