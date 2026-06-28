@@ -1,0 +1,10 @@
+{
+  "id": "crucible:aluminium",
+  "type": "base_metal",
+  "durability": 32,
+  "weight": 25,
+  "strength": 30,
+  "hardness": 28,
+  "heatResistance": 55,
+  "enchantability": 35
+}
