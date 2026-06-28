@@ -1,0 +1,10 @@
+{
+  "id": "crucible:zinc",
+  "type": "base_metal",
+  "durability": 25,
+  "weight": 50,
+  "strength": 28,
+  "hardness": 35,
+  "heatResistance": 25,
+  "enchantability": 35
+}

@@ -1,0 +1,10 @@
+{
+  "id": "crucible:tin",
+  "type": "base_metal",
+  "durability": 20,
+  "weight": 45,
+  "strength": 20,
+  "hardness": 18,
+  "heatResistance": 30,
+  "enchantability": 45
+}

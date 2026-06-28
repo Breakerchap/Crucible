@@ -1,0 +1,10 @@
+{
+  "id": "crucible:lead",
+  "type": "base_metal",
+  "durability": 30,
+  "weight": 95,
+  "strength": 25,
+  "hardness": 18,
+  "heatResistance": 40,
+  "enchantability": 20
+}

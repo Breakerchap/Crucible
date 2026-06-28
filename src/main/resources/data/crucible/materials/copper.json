@@ -1,0 +1,10 @@
+{
+  "id": "crucible:copper",
+  "type": "base_metal",
+  "durability": 35,
+  "weight": 55,
+  "strength": 35,
+  "hardness": 30,
+  "heatResistance": 45,
+  "enchantability": 55
+}
