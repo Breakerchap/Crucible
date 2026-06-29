@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "ingredient": "crucible:raw_gold",
+  "result": {
+    "count": 1,
+    "id": "crucible:gold_ingot"
+  }
+}

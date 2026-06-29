@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "crucible:aluminium_ore",
+    "crucible:deepslate_aluminium_ore",
+    "crucible:lead_ore",
+    "crucible:deepslate_lead_ore",
+    "crucible:nickel_ore",
+    "crucible:deepslate_nickel_ore",
+    "crucible:silver_ore",
+    "crucible:deepslate_silver_ore",
+    "crucible:tin_ore",
+    "crucible:deepslate_tin_ore",
+    "crucible:zinc_ore",
+    "crucible:deepslate_zinc_ore"
+  ]
+}
