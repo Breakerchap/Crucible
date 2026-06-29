@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.remy.Crucible"
+			"com.remy.crucible.Crucible"
 		],
 		"client": [
 			"com.remy.client.CrucibleClient"
