@@ -3,6 +3,9 @@ plugins {
 	id 'maven-publish'
 }
 
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
 version = project.mod_version
 group = project.maven_group
 
@@ -13,6 +16,10 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 }
+
+def generatedOreWorldgenDir = layout.buildDirectory.dir("generated/resources/oreWorldgen")
+def oreConfigDir = file("src/main/resources/data/crucible/ores")
+def biomeGroupDir = file("src/main/resources/data/crucible/biome_groups")
 
 loom {
 	splitEnvironmentSourceSets()
@@ -39,11 +46,117 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	testImplementation "org.junit.jupiter:junit-jupiter-api:5.10.2"
+	testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.10.2"
+	testRuntimeOnly "org.junit.platform:junit-platform-launcher:1.10.2"
+}
+
+tasks.register("generateOreWorldgenResources") {
+	inputs.dir(oreConfigDir)
+	outputs.dir(generatedOreWorldgenDir)
+
+	doLast {
+		def parser = new JsonSlurper()
+		def outputRoot = generatedOreWorldgenDir.get().asFile
+		def configuredDir = file("${outputRoot}/data/crucible/worldgen/configured_feature")
+		def placedDir = file("${outputRoot}/data/crucible/worldgen/placed_feature")
+
+		delete(outputRoot)
+		configuredDir.mkdirs()
+		placedDir.mkdirs()
+
+		oreConfigDir.listFiles()
+			.findAll { it.name.endsWith(".json") }
+			.sort { a, b -> a.name <=> b.name }
+			.each { oreFile ->
+				def ore = parser.parse(oreFile)
+				def oreName = oreFile.name[0..-6]
+
+				def configuredFeature = [
+					type  : "minecraft:ore",
+					config: [
+						discard_chance_on_air_exposure: 0.0,
+						size                          : ore.generation.veinSize,
+						targets                       : [
+							[
+								state : [Name: ore.blocks.normal],
+								target: [
+									predicate_type: "minecraft:tag_match",
+									tag           : "minecraft:stone_ore_replaceables"
+								]
+							],
+							[
+								state : [Name: ore.blocks.deepslate],
+								target: [
+									predicate_type: "minecraft:tag_match",
+									tag           : "minecraft:deepslate_ore_replaceables"
+								]
+							]
+						]
+					]
+				]
+
+				writePrettyJson(new File(configuredDir, "${oreName}.json"), configuredFeature)
+
+				ore.biomeGroups.each { biomeGroupId, multiplier ->
+					def parts = biomeGroupId.split(":", 2)
+					def placedName = "${oreName}__${parts[0]}__${parts[1]}"
+					def count = Math.max(1, Math.round(
+						(ore.generation.veinsPerChunk as double) * (multiplier as double) * (ore.generation.spawnWeight as double) / 50.0d
+					) as int)
+					def isConfiguredGroup = parts[0] == "crucible" && new File(biomeGroupDir, "${parts[1]}.json").exists()
+					def placement = [
+						[
+							type : "minecraft:count",
+							count: count
+						],
+						[
+							type: "minecraft:in_square"
+						],
+						[
+							type  : "minecraft:height_range",
+							height: [
+								type         : "minecraft:trapezoid",
+								max_inclusive: [
+									absolute: ore.generation.maxY
+								],
+								min_inclusive: [
+									absolute: ore.generation.minY
+								]
+							]
+						]
+					]
+
+					if (isConfiguredGroup) {
+						placement.add([
+							type             : "crucible:nearest_surface_biome_group",
+							group            : biomeGroupId,
+							max_search_radius: 16,
+							sample_step      : 4
+						])
+					}
+
+					placement.add([
+						type: "minecraft:biome"
+					])
+
+					def placedFeature = [
+						feature  : "crucible:${oreName}",
+						placement: placement
+					]
+
+					writePrettyJson(new File(placedDir, "${placedName}.json"), placedFeature)
+				}
+			}
+	}
 }
 
 processResources {
 	def version = project.version
 	inputs.property "version", version
+	dependsOn tasks.named("generateOreWorldgenResources")
+	from(generatedOreWorldgenDir)
 
 	filesMatching("fabric.mod.json") {
 		expand "version": version
@@ -52,6 +165,11 @@ processResources {
 
 tasks.withType(JavaCompile).configureEach {
 	it.options.release = 25
+}
+
+test {
+	useJUnitPlatform()
+	dependsOn tasks.named("generateOreWorldgenResources")
 }
 
 java {
@@ -64,6 +182,10 @@ java {
 	targetCompatibility = JavaVersion.VERSION_25
 }
 
+tasks.matching { it.name == "sourcesJar" }.configureEach {
+	dependsOn tasks.named("generateOreWorldgenResources")
+}
+
 jar {
 	def projectName = project.name
 	inputs.property "projectName", projectName
@@ -71,6 +193,11 @@ jar {
 	from("LICENSE") {
 		rename { "${it}_$projectName"}
 	}
+}
+
+def writePrettyJson(File targetFile, Object content) {
+	targetFile.parentFile.mkdirs()
+	targetFile.text = JsonOutput.prettyPrint(JsonOutput.toJson(content)) + System.lineSeparator()
 }
 
 // configure the maven publication
