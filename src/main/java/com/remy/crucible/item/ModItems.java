@@ -9,6 +9,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 
 import java.util.List;
 import java.util.function.Function;
@@ -24,30 +25,6 @@ public class ModItems {
       new Item.Properties());
   public static final Item RAW_ALUMINIUM = registerItem(
       "raw_aluminium",
-      Item::new,
-      new Item.Properties());
-  public static final Item COPPER_INGOT = registerItem(
-      "copper_ingot",
-      Item::new,
-      new Item.Properties());
-  public static final Item RAW_COPPER = registerItem(
-      "raw_copper",
-      Item::new,
-      new Item.Properties());
-  public static final Item GOLD_INGOT = registerItem(
-      "gold_ingot",
-      Item::new,
-      new Item.Properties());
-  public static final Item RAW_GOLD = registerItem(
-      "raw_gold",
-      Item::new,
-      new Item.Properties());
-  public static final Item IRON_INGOT = registerItem(
-      "iron_ingot",
-      Item::new,
-      new Item.Properties());
-  public static final Item RAW_IRON = registerItem(
-      "raw_iron",
       Item::new,
       new Item.Properties());
   public static final Item LEAD_INGOT = registerItem(
@@ -93,9 +70,6 @@ public class ModItems {
 
   public static final List<Item> INGOTS = List.of(
       ALIMINIUM_INGOT,
-      COPPER_INGOT,
-      GOLD_INGOT,
-      IRON_INGOT,
       LEAD_INGOT,
       NICKEL_INGOT,
       SILVER_INGOT,
@@ -103,9 +77,6 @@ public class ModItems {
       ZINC_INGOT);
   public static final List<Item> RAW_MATERIALS = List.of(
       RAW_ALUMINIUM,
-      RAW_COPPER,
-      RAW_GOLD,
-      RAW_IRON,
       RAW_LEAD,
       RAW_NICKEL,
       RAW_SILVER,
@@ -143,9 +114,9 @@ public class ModItems {
   public static Item getIngotForMaterial(String materialPath) {
     return switch (materialPath) {
       case "aluminium" -> ALIMINIUM_INGOT;
-      case "copper" -> COPPER_INGOT;
-      case "gold" -> GOLD_INGOT;
-      case "iron" -> IRON_INGOT;
+      case "copper" -> Items.COPPER_INGOT;
+      case "gold" -> Items.GOLD_INGOT;
+      case "iron" -> Items.IRON_INGOT;
       case "lead" -> LEAD_INGOT;
       case "nickel" -> NICKEL_INGOT;
       case "silver" -> SILVER_INGOT;
@@ -158,9 +129,9 @@ public class ModItems {
   public static Item getRawForMaterial(String materialPath) {
     return switch (materialPath) {
       case "aluminium" -> RAW_ALUMINIUM;
-      case "copper" -> RAW_COPPER;
-      case "gold" -> RAW_GOLD;
-      case "iron" -> RAW_IRON;
+      case "copper" -> Items.RAW_COPPER;
+      case "gold" -> Items.RAW_GOLD;
+      case "iron" -> Items.RAW_IRON;
       case "lead" -> RAW_LEAD;
       case "nickel" -> RAW_NICKEL;
       case "silver" -> RAW_SILVER;

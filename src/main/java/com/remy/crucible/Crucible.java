@@ -2,7 +2,6 @@ package com.remy.crucible;
 
 import com.remy.crucible.block.ModBlocks;
 import com.remy.crucible.item.ModItems;
-import com.remy.crucible.loot.ModLoot;
 import com.remy.crucible.worldgen.ModOreGeneration;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -16,7 +15,6 @@ public class Crucible implements ModInitializer {
   public void onInitialize() {
     ModBlocks.registerModBlocks();
     ModItems.registerModItems();
-    ModLoot.registerLootTables();
     ModOreGeneration.register();
   }
 }
