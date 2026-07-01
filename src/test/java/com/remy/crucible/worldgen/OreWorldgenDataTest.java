@@ -25,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class OreWorldgenDataTest {
+  private static final double ORE_SPAWN_RATE_MULTIPLIER = 3.0d;
   private static final Path ORE_DIR = Path.of("src/main/resources/data/crucible/ores");
   private static final Path BIOME_GROUP_DIR = Path.of("src/main/resources/data/crucible/biome_groups");
   private static final Path GENERATED_PLACED_FEATURE_DIR = Path.of(
@@ -125,7 +126,7 @@ class OreWorldgenDataTest {
   private static int expectedCountFor(OreConfig ore, double multiplier) {
     return Math.max(
         1,
-        (int) Math.round(ore.veinsPerChunk() * multiplier * ore.spawnWeight() / 50.0d));
+        (int) Math.round(ore.veinsPerChunk() * multiplier * ORE_SPAWN_RATE_MULTIPLIER * ore.spawnWeight() / 50.0d));
   }
 
   private static List<JsonObject> placementEntries(JsonObject placedFeature) {

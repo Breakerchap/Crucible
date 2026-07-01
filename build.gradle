@@ -20,6 +20,7 @@ repositories {
 def generatedOreWorldgenDir = layout.buildDirectory.dir("generated/resources/oreWorldgen")
 def oreConfigDir = file("src/main/resources/data/crucible/ores")
 def biomeGroupDir = file("src/main/resources/data/crucible/biome_groups")
+def oreSpawnRateMultiplier = 3.5d
 
 loom {
 	splitEnvironmentSourceSets()
@@ -103,7 +104,11 @@ tasks.register("generateOreWorldgenResources") {
 					def parts = biomeGroupId.split(":", 2)
 					def placedName = "${oreName}__${parts[0]}__${parts[1]}"
 					def count = Math.max(1, Math.round(
-						(ore.generation.veinsPerChunk as double) * (multiplier as double) * (ore.generation.spawnWeight as double) / 50.0d
+						(ore.generation.veinsPerChunk as double)
+							* (multiplier as double)
+							* oreSpawnRateMultiplier
+							* (ore.generation.spawnWeight as double)
+							/ 50.0d
 					) as int)
 					def isConfiguredGroup = parts[0] == "crucible" && new File(biomeGroupDir, "${parts[1]}.json").exists()
 					def placement = [
